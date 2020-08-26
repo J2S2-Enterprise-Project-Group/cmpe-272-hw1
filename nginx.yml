@@ -8,6 +8,23 @@
       changed_when: true
       notify:
         - Start
+    - name: Create folder for nginx conf
+      file:
+        path: /etc/nginx/site-ansible
+        state: directory
+        owner: root
+        group: root
+        mode: 0775
+    - name: Copy site.conf
+      copy:
+        src: site.conf.j2
+        dest: /etc/nginx/site-ansible
+        owner: root
+        group: root
+        mode: 0644
+      changed_when: true
+      notify: 
+        - Reload
   handlers:
     - name: Start
       service: name=nginx state=started
