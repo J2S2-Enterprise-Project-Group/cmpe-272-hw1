@@ -8,9 +8,21 @@
       changed_when: true
       notify:
         - Start
+    - name: Create www directory
+      file:
+        path: /var/www/shannonphu-helloworld.com
+        state: directory
+        mode: 0775
+        owner: root
+        group: root
+    - name: Delete default nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: Reload
     - name: Create folder for nginx conf
       file:
-        path: /etc/nginx/site-ansible
+        path: /etc/nginx/sites-enabled
         state: directory
         owner: root
         group: root
@@ -18,7 +30,7 @@
     - name: Copy site.conf
       copy:
         src: site.conf.j2
-        dest: /etc/nginx/site-ansible
+        dest: /etc/nginx/sites-enabled/shannonphu-helloworld.com
         owner: root
         group: root
         mode: 0644

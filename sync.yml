@@ -1,0 +1,18 @@
+- hosts: webservers
+  tasks:
+  - name: Make dir
+    file:
+      path: /var/www
+      state: directory
+      owner: root
+      group: root
+      mode: 0775
+  - name: sync website
+    synchronize:
+      src: index.html
+      dest: /var/www/shannonphu-helloworld.com
+      archive: no
+      checksum: yes
+      recursive: yes
+      delete: yes
+    become: no
