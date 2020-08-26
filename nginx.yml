@@ -1,0 +1,15 @@
+---
+- hosts: webservers
+  tasks:
+    - name: Update
+      yum: name=epel-release
+    - name: Install 
+      yum: name=nginx state=latest
+      changed_when: true
+      notify:
+        - Start
+  handlers:
+    - name: State
+      service: name=nginx state=started
+    - name Reload
+      service: name=nginx state=reloaded
