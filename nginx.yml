@@ -9,7 +9,7 @@
       notify:
         - Start
   handlers:
-    - name: State
+    - name: Start
       service: name=nginx state=started
-    - name Reload
+    - name: Reload
       service: name=nginx state=reloaded
