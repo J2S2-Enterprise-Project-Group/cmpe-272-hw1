@@ -1,5 +1,6 @@
 # Install ansible on ubuntu
 ssh cisco@198.18.134.28
+
 sudo apt-get install software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
@@ -11,4 +12,4 @@ https://www.redhat.com/sysadmin/deploying-static-website-ansible
 https://www.serverlab.ca/tutorials/dev-ops/automation/how-to-use-ansible-to-deploy-your-website/
 
 # Commands
-ansible-playbook nginx.yml -i inventory -b
+ansible-playbook -i inventory.ini -b main.yml
