@@ -21,12 +21,15 @@
 
     - name: Enable firewall
       firewalld:
-        service: httpd
+        service: http
         state: enabled
         immediate: yes
         permanent: yes
-      ignore_errors: yes         
-
+      #ignore_errors: yes         
+    - name: Restart firewall
+      service: 
+        name: firewalld
+        state: restarted
     - name: Start server
       service:
         name: httpd
