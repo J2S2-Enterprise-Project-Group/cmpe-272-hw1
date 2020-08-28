@@ -1,9 +1,0 @@
-server {
-  listen 80;
-  listen [::]:80;
-  server_name shannonphu-helloworld.com;
-  root /var/www/shannonphu-helloworld.com;
-  location / {
-    try_files $uri $uri/ =404;
-  }
-}
