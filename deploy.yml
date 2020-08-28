@@ -1,5 +1,5 @@
 ---
-- name: Configure servers 
+- name: Deploy servers 
   hosts: webservers
   remote_user: root
   become: true
@@ -25,11 +25,12 @@
         state: enabled
         immediate: yes
         permanent: yes
-      #ignore_errors: yes         
+             
     - name: Restart firewall
       service: 
         name: firewalld
         state: restarted
+    
     - name: Start server
       service:
         name: httpd

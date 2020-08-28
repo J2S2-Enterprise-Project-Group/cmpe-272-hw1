@@ -1,0 +1,31 @@
+---
+- name: Undeploy servers 
+  hosts: webservers
+  remote_user: root
+  become: true
+
+  tasks:
+
+    - name: Remove content
+      file:
+        state: absent
+        path: /var/www/html/index.html
+
+#    - name: Stop firewall
+#      service: 
+#        name: firewalld
+#        state: stopped
+
+    - name: Disable firewall
+      firewalld:
+        service: http
+        state: disabled
+        immediate: yes
+        permanent: yes
+
+    - name: Stop server
+      service:
+        name: httpd
+        state: stopped
+        enabled: false 
+
