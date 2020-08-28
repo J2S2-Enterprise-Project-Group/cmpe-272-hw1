@@ -13,7 +13,7 @@
 
     - name: Create content
       copy:
-        content: "Hello from shannon"
+        content: "Hello World from {{ansible_hostname}}"
         dest: /var/www/html/index.html
         owner: root
         group: root

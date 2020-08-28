@@ -1,10 +1,9 @@
 # Install ansible on ubuntu
 ssh cisco@198.18.134.28
 
-sudo apt-get install software-properties-common
-sudo apt-add-repository ppa:ansible/ansible
-sudo apt-get update
-sudo apt-get install ansible
+# Steps:
+1. Clone the repo
+2. ./install.sh
 
 # Links
 https://www.digitalocean.com/community/tutorials/how-to-set-up-ansible-inventories
@@ -13,3 +12,7 @@ https://www.serverlab.ca/tutorials/dev-ops/automation/how-to-use-ansible-to-depl
 
 # Commands
 ansible-playbook -i inventory.ini -b main.yml
+
+# Visit:
+centos1.dcloud.cisco.com
+centos2.dcloud.cisco.com
