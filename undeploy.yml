@@ -11,14 +11,17 @@
         state: absent
         path: /var/www/html/index.html
 
-#    - name: Stop firewall
-#      service: 
-#        name: firewalld
-#        state: stopped
+    - name: Restore original httpd.conf
+      command: cp /etc/httpd/conf/httpd.conf.bak /etc/httpd/conf/httpd.conf
+
+    - name: Remove copied httpd.conf
+      file:
+        state: absent
+        path: /etc/httpd/conf/httpd.conf.bak
 
     - name: Disable firewall
       firewalld:
-        service: http
+        port: 8080/tcp
         state: disabled
         immediate: yes
         permanent: yes

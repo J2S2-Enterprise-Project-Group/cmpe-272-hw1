@@ -11,8 +11,10 @@ https://www.redhat.com/sysadmin/deploying-static-website-ansible
 https://www.serverlab.ca/tutorials/dev-ops/automation/how-to-use-ansible-to-deploy-your-website/
 
 # Commands
-ansible-playbook -i inventory.ini -b main.yml
+ansible-playbook -i inventory.ini -b deploy.yml
+ansible-playbook -i inventory.ini -b undeploy.yml
 
 # Visit:
 centos1.dcloud.cisco.com
+
 centos2.dcloud.cisco.com

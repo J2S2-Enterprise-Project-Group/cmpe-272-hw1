@@ -11,6 +11,17 @@
         name: httpd
         state: latest
 
+    - name: Backup httpd.conf
+      command: cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak
+
+    - name: Copy new http.conf
+      copy:
+        src: ./httpd.conf
+        dest: /etc/httpd/conf/httpd.conf
+        owner: root
+        group: root
+        mode: ugo+rw
+
     - name: Create content
       copy:
         content: "Hello World from {{ansible_hostname}}"
@@ -21,7 +32,7 @@
 
     - name: Enable firewall
       firewalld:
-        service: http
+        port: 8080/tcp
         state: enabled
         immediate: yes
         permanent: yes
@@ -34,6 +45,6 @@
     - name: Start server
       service:
         name: httpd
-        state: started
+        state: restarted
         enabled: true 
 
