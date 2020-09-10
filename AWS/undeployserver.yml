@@ -22,7 +22,7 @@
                  state: absent
             tags: cleanup
 
-        -   name: Removing the files created on CentOS1 & CentOS2
+        -   name: Removing the files
             file:
                 state: absent
                 path: /var/www/html/index.html
