@@ -1,0 +1,30 @@
+-
+    name: Executing ansible playbook on target System Deploy/Cleanup/Start/Stop Server
+    hosts: webservers
+    become: yes
+    vars:
+        ansible_become_pass: home/ec2-user/keypairfile
+    tasks:
+
+
+        -   name: Stop Apache web server
+            service:
+                name: apache2
+                state: stopped
+                enabled: false
+            tags:
+                -   cleanup
+                -   stopServer
+
+        -   name: Remove Apache Package
+            apt:
+                 name: apache2
+                 state: absent
+            tags: cleanup
+
+        -   name: Removing the files created on CentOS1 & CentOS2
+            file:
+                state: absent
+                path: /var/www/html/index.html
+            tags: cleanup
+
