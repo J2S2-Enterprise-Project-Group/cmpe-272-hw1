@@ -9,10 +9,23 @@
 
 # Commands
 ```
-ansible-playbook -i inventory.ini -b deploy.yml
+ansible-playbook -i inventory.ini -b playbook.yml --tags "setup"
 ```
 ```
-ansible-playbook -i inventory.ini -b undeploy.yml
+ansible-playbook -i inventory.ini -b playbook.yml --tags "cleanup"
+```
+
+Optionally you can also use two other commands:-
+
+Start Server
+
+```
+ansible-playbook -i inventory.ini -b playbook.yml --tags "startServer"
+```
+
+Stop Server
+```
+ansible-playbook -i inventory.ini -b playbook.yml --tags "stopServer"
 ```
 
 # Visit:
